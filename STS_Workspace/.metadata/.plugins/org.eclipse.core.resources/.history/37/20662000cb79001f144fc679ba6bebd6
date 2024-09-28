@@ -1,0 +1,19 @@
+package com.tejas.www.service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.tejas.www.model.Employee;
+import com.tejas.www.repo.EmployeeRepository;
+
+@Service
+public class EmployeeService {
+	
+	EmployeeRepository employeeRepository;
+
+	public List<Employee> getAllEmployees() {
+ 		return employeeRepository.findAll();
+	}
+
+}

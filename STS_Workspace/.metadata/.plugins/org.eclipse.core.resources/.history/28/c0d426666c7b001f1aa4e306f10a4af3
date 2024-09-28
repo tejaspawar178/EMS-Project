@@ -1,0 +1,43 @@
+package com.tejas.www.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.tejas.www.model.Employee;
+import com.tejas.www.service.EmployeeService;
+
+@RestController
+@RequestMapping("/api/v1")
+@CrossOrigin(origins = "http://localhost:3000")
+public class EmployeeController {
+	
+	@Autowired
+	EmployeeService employeeService;
+	
+	//Show The Data
+	@GetMapping("/employees")
+	public List<Employee> getAllEmployees(){
+		return employeeService.getAllEmployees();
+	}
+	
+	//Insert The Data
+	@PostMapping("/employees")
+	public Employee createCustomer(@RequestBody Employee employee) {
+		return employeeService.createCustomer(employee);
+	}
+	
+	@GetMapping("employees/{id}")
+	public Employee getEmployeeById(@PathVariable Employee employee){
+		return employeeService.getEmployeeById(employee);
+		
+	}
+
+}

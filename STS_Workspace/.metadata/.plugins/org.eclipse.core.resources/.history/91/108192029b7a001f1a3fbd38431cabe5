@@ -1,0 +1,30 @@
+package com.tejas.www.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.tejas.www.model.Employee;
+import com.tejas.www.repo.EmployeeRepository;
+
+@Service
+public class EmployeeService {
+	
+	@Autowired
+	EmployeeRepository employeeRepository;
+
+	//Show The Data
+	public List<Employee> getAllEmployees() {
+ 		return employeeRepository.findAll();
+	}
+
+	public Employee createEmployee(Employee employee) {
+		// TODO Auto-generated method stub
+		return employeeRepository.save(employee);
+	}
+
+	
+	
+
+}

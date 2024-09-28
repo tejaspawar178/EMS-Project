@@ -1,0 +1,40 @@
+package com.tejas.www.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.tejas.www.exception.ResourceNotFoundException;
+import com.tejas.www.model.Employee;
+import com.tejas.www.repo.EmployeeRepository;
+
+@Service
+public class EmployeeService {
+	
+	@Autowired
+	EmployeeRepository employeeRepository;
+
+	//Show The Data
+	public List<Employee> getAllEmployees() {
+ 		return employeeRepository.findAll();
+	}
+
+	//Insert The Data
+	public Employee createCustomer(Employee employee) {
+		return employeeRepository.save(employee);
+	}
+
+	//FindBy Employee Id
+	public Employee getEmployeeById(Long id) {
+		return employeeRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Id Not Found"));
+	}
+
+	
+
+	
+
+	
+	
+
+}

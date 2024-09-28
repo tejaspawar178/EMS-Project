@@ -1,0 +1,12 @@
+package com.tejas.www.service;
+
+import org.springframework.stereotype.Service;
+
+import com.tejas.www.repo.EmployeeRepository;
+
+@Service
+public class EmployeeService {
+	
+	EmployeeRepository employeeRepository;
+
+}
